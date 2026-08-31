@@ -5,12 +5,15 @@
 [![GLB](https://img.shields.io/badge/GLB-glTF-blue.svg)](https://www.khronos.org/gltf/)
 [![CC0](https://img.shields.io/badge/CC0-Public%20Domain-green.svg)](https://creativecommons.org/public-domain/cc0/)
 [![Web 3D](https://img.shields.io/badge/Web-3D-purple.svg)](https://glbkit.com/)
+![Last Updated](https://img.shields.io/badge/last%20updated-2026--08-lightgrey.svg)
 
 > A curated collection of free and useful 3D models, PBR textures, materials, HDRIs, environments, and other resources for 3D artists, designers, game developers, and Web 3D developers.
 
 Finding good 3D assets can be surprisingly difficult.
 
 Models are spread across different libraries, licenses vary between resources, and assets are often provided in formats that are not ideal for modern Web 3D workflows.
+
+I ran into this constantly while building [GLBKit](https://glbkit.com/) — a set of browser-based tools for viewing, inspecting, and converting 3D files. I kept bookmarking the same handful of "good" asset sources over and over, so I put them all in one place instead.
 
 This repository brings useful resources together in one place, with a focus on:
 
@@ -79,9 +82,14 @@ The goal is simple:
 * [Licensing](#licensing)
 * [Recommended Web 3D Formats](#recommended-web-3d-formats)
 * [3D Asset Optimization Checklist](#3d-asset-optimization-checklist)
+* [Recommended Web 3D Workflow](#recommended-web-3d-workflow)
+* [FAQ](#faq)
 * [Contributing](#contributing)
+* [How This List Is Maintained](#how-this-list-is-maintained)
 * [Support](#support)
 * [Related GLBKit Resources](#related-glbkit-resources)
+* [Other GLBKit Open Source Resources](#other-glbkit-open-source-resources)
+* [Contributors](#contributors)
 * [License](#license)
 
 ---
@@ -89,6 +97,8 @@ The goal is simple:
 # 3D Models
 
 Collections and resources for finding downloadable 3D models.
+
+Once you've downloaded a model, you can quickly preview it in the browser using the [GLBKit 3D Model Viewer](https://glbkit.com/3d-model-viewer) — no software install needed, drag and drop the file and inspect it directly.
 
 ## Free 3D Models
 
@@ -126,7 +136,7 @@ Always verify the license attached to the specific asset.
 
 Resources for 3D characters, humanoids, creatures, and character-related assets.
 
-* **[Mixamo](https://www.mixamo.com/)** — Character and animation platform from Adobe.
+* **[Mixamo](https://www.mixamo.com/)** — Character and animation platform from Adobe. My personal go-to for quick CC0-friendly rigging and animation on top of a base character.
 * **[Sketchfab](https://sketchfab.com/)** — Searchable collection of downloadable character models.
 * **[MakeHuman](https://www.makehumancommunity.org/)** — Open-source 3D human character creation software.
 * **[VRoid](https://vroid.com/)** — Character creation ecosystem focused on 3D avatars.
@@ -291,6 +301,8 @@ Tools for preparing, optimizing, converting, validating, and inspecting 3D asset
 * **[gltfpack](https://meshoptimizer.org/)** — Command-line glTF optimizer built around meshoptimizer.
 * **[Draco](https://google.github.io/draco/)** — Geometry compression library.
 
+Before running a heavy optimization pass, it helps to see what you're actually dealing with — the [GLBKit 3D Model Viewer](https://glbkit.com/3d-model-viewer) lets you inspect mesh and material structure in the browser first.
+
 ---
 
 ## Compression
@@ -310,6 +322,8 @@ For Web 3D, compression should be evaluated together with download size, decodin
 * **[Blender](https://www.blender.org/)** — Open-source 3D creation suite with extensive import/export capabilities.
 * **[Khronos glTF Blender I/O](https://github.com/KhronosGroup/glTF-Blender-IO)** — Official Khronos glTF exporter/importer for Blender.
 * **[Assimp](https://github.com/assimp/assimp)** — Open Asset Import Library supporting many 3D formats.
+
+If you just need a quick look at a file before deciding whether to convert it, the [GLBKit GLB Viewer](https://glbkit.com/glb-viewer) and [GLTF Viewer](https://glbkit.com/gltf-viewer) open directly in the browser — useful for a fast sanity check before you commit to a full pipeline.
 
 ---
 
@@ -377,6 +391,8 @@ Resources:
 * **[glTF Transform](https://gltf-transform.dev/)** — Processing and optimization toolkit.
 * **[glTF Validator](https://github.com/CesiumGS/glTF-Validator)** — Validate glTF assets.
 
+To preview any GLB or glTF file directly in your browser without installing software, use the [GLBKit GLB Viewer](https://glbkit.com/glb-viewer) or [GLTF Viewer](https://glbkit.com/gltf-viewer).
+
 ---
 
 ## Three.js Assets
@@ -443,7 +459,7 @@ For Web 3D, consider:
 * STL
 * PLY
 
-For browser-based rendering, GLB/glTF is often a particularly practical delivery format.
+For browser-based rendering, GLB/glTF is often a particularly practical delivery format. You can drop any of these formats into the [GLBKit 3D Model Viewer](https://glbkit.com/3d-model-viewer) to check them before deciding.
 
 ### 3. Geometry
 
@@ -657,7 +673,29 @@ Test in Browser
 Production
 ```
 
-For large asset libraries, automate as many of these steps as possible.
+For large asset libraries, automate as many of these steps as possible. For quick one-off checks along the way, browser-based tools like the [GLBKit Viewer](https://glbkit.com/3d-model-viewer) save you from opening a full DCC application just to look at a file.
+
+---
+
+# FAQ
+
+**Which 3D format should I use for the Web?**
+GLB is generally the most practical choice for browser delivery — it packages geometry, materials, and textures into a single binary file, which keeps loading simple. Use glTF (with separate files) when you need to inspect or edit individual resources in a pipeline.
+
+**Is CC0 really free for commercial use?**
+In most cases, yes — CC0 is a public-domain dedication and generally allows commercial use without attribution. That said, always double-check the specific asset page, since not every "free" asset on a given site is actually CC0.
+
+**Can I view a GLB or glTF file without installing any software?**
+Yes. You can drag and drop the file directly into a browser-based tool like the [GLBKit Viewer](https://glbkit.com/3d-model-viewer) — no install required, works on desktop and mobile.
+
+**What's the difference between GLB and glTF?**
+glTF is the open standard; GLB is its binary form. GLB bundles everything (geometry, materials, textures) into one file, while glTF typically ships as JSON plus separate texture/binary files. For Web delivery, GLB is usually simpler to work with.
+
+**Do I need to optimize a model before using it on a website?**
+Almost always, yes. Raw exports from DCC tools often carry unused materials, unnecessarily high polygon counts, or uncompressed textures. Running a model through `gltf-transform` or `gltfpack` before deployment typically improves load time significantly.
+
+**How often is this list updated?**
+See [How This List Is Maintained](#how-this-list-is-maintained) below.
 
 ---
 
@@ -707,6 +745,14 @@ Please read **[CONTRIBUTING.md](CONTRIBUTING.md)** before opening a Pull Request
 
 ---
 
+# How This List Is Maintained
+
+This list is actively maintained alongside [GLBKit](https://glbkit.com/). Links are periodically checked for accuracy, and new resources are added as they're found useful in real projects — not just added for the sake of length.
+
+If you spot a broken link, an outdated URL, or incorrect license information, please open an issue or a pull request. Every contribution is reviewed before merging.
+
+---
+
 # Support
 
 If this repository is useful to you:
@@ -728,11 +774,11 @@ The goal is to make finding high-quality 3D assets easier for the community.
 
 Useful GLBKit tools include:
 
-* **[3D Model Viewer](https://glbkit.com/3d-model-viewer)**
-* **[GLB Viewer](https://glbkit.com/glb-viewer)**
-* **[GLTF Viewer](https://glbkit.com/gltf-viewer)**
-* **[3D Model Screenshot](https://glbkit.com/3d-model-screenshot)**
-* **[GLB Screenshot](https://glbkit.com/glb-screenshot)**
+* **[3D Model Viewer](https://glbkit.com/3d-model-viewer)** — Drag-and-drop viewer supporting multiple 3D formats directly in the browser.
+* **[GLB Viewer](https://glbkit.com/glb-viewer)** — Quick GLB preview with no install required.
+* **[GLTF Viewer](https://glbkit.com/gltf-viewer)** — View glTF files, including separate-file variants, in the browser.
+* **[3D Model Screenshot](https://glbkit.com/3d-model-screenshot)** — Generate high-quality screenshots of any supported 3D model.
+* **[GLB Screenshot](https://glbkit.com/glb-screenshot)** — Screenshot tool specifically for GLB files.
 
 GLBKit is designed to make working with browser-based 3D assets easier for developers and creators.
 
@@ -741,6 +787,12 @@ GLBKit is designed to make working with browser-based 3D assets easier for devel
 # Other GLBKit Open Source Resources
 
 * **[Awesome 3D AI, SEO & GEO for 3D Web](https://github.com/glbkit-tools/awesome-3d-ai-seo-geo)** — Resources for AI, SEO, GEO, AEO, AI Search, WebGL, Three.js, React Three Fiber, performance, and modern 3D websites.
+
+---
+
+# Contributors
+
+Thanks to everyone who contributes to this list. Once contributions start coming in, this section will list contributors here (or via GitHub's auto-generated contributor graph).
 
 ---
 
