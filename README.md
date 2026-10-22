@@ -108,6 +108,7 @@ Once you've downloaded a model, you can quickly preview it in the browser using 
 * **[Sketchfab](https://sketchfab.com/)** — Large 3D model platform with downloadable models; check the individual asset license before use.
 * **[Smithsonian 3D](https://3d.si.edu/)** — Digitized cultural heritage and scientific objects.
 * **[NASA 3D Resources](https://science.nasa.gov/3d-resources/)** — 3D models and resources related to NASA missions and space science.
+* **[JadeRealms](https://3dmodelhub.io/models/)** — Free static GLB models with Blender sources and browser previews. Commercial game and animation use is permitted under a [custom license](https://3dmodelhub.io/license/); standalone resale and repackaged redistribution are prohibited.
 
 > **License note:** "Free download" does not automatically mean unrestricted use. Always check the license of the individual asset.
 
